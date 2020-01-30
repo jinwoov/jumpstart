@@ -2,11 +2,12 @@
   "name": "jumpstart",
   "version": "0.0.1",
   "description": "**Version**: 0.0.1  \r **Authors**:  \r [Jin Woo Kim](https://github.com/jinwoov)  \r [Vijayeta Rangarajan](https://github.com/vijayetar)  \r [Robert James Nielsen](https://github.com/robertjnielsen)",
-  "main": "jumpstart.js",
+  "main": "server.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
