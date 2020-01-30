@@ -9,7 +9,9 @@ const superagent = require('superagent');
 const methodOverride = require('method-override');
 const pg = require('pg');
 require('ejs');
-
+let azunaKey = process.env.AZUNA_API_KEY;
+let museKey = process.env.MUSE_API_KEY;
+let usaKey = process.env.USAJOBS_API_KEY;
 // Declare lib dependencies.
 const flags = require('./lib/flags');
 const user = require('./lib/user');
@@ -145,9 +147,7 @@ function renderSearch(req, res) {
 
 ///////// DISPLAY SEARCH RESULTS ON RESULTS PAGE USING API KEYS//////
 function displayResult (request, response) {
-  let azunaKey = process.env.AZUNA_API_KEY;
-  let museKey = process.env.MUSE_API_KEY;
-  let usaKey = process.env.USAJOBS_API_KEY;
+
   let city = request.body.location;
   let email= process.env.EMAIL;
 
@@ -184,7 +184,7 @@ function displayResult (request, response) {
     .set({
       'Host': 'data.usajobs.gov',
       'User-Agent': email,
-      'Authorization-Key': usaKey
+      'Authorization-Key': 'svlr2006@gmail.com'
     })
     .then(results => {
       let parsedData = JSON.parse(results.text)
