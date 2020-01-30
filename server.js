@@ -161,6 +161,7 @@ function displayResult (request, response) {
     .then(results => {
       let parsedData = (JSON.parse(results.text))
       return parsedData.results.map(data => {
+        // console.log(data)
         return new AzunaJobsearchs(data)
       });
     }) .catch(err => console.error(err));
@@ -169,6 +170,7 @@ function displayResult (request, response) {
     .then(results => {
       let parseData = JSON.parse(results.text);
       return parseData.results.map(data => {
+        // console.log(data)
         return new Musejobsearch(data)
       })
     }) .catch(err => console.error(err))
@@ -193,9 +195,9 @@ function displayResult (request, response) {
       })
     }) .catch(err => console.error(err));
 
-  Promise.all([azunaResult, museResult, gitHubResult, usaJobResult])
-    .then(result => {
-      let newData =result.flat(3);
+  Promise.all([museResult,gitHubResult,usaJobResult,azunaResult])
+    .then(result => { 
+      let newData =result.flat(4);
       let shuffleData= newData.shuffle();
 
       response.status(200).render('./pages/results', {data: shuffleData});
