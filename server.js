@@ -12,6 +12,7 @@ require('ejs');
 let azunaKey = process.env.AZUNA_API_KEY;
 let museKey = process.env.MUSE_API_KEY;
 let usaKey = process.env.USAJOBS_API_KEY;
+let email= process.env.EMAIL;
 // Declare lib dependencies.
 const flags = require('./lib/flags');
 const user = require('./lib/user');
@@ -149,7 +150,6 @@ function renderSearch(req, res) {
 function displayResult (request, response) {
 
   let city = request.body.location;
-  let email= process.env.EMAIL;
 
   let jobQuery = request.body.job_title;
   let azunaUrl = `https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=9b8fb405&app_key=${azunaKey}&where=${city}&what=$${jobQuery}`;
@@ -184,7 +184,7 @@ function displayResult (request, response) {
     .set({
       'Host': 'data.usajobs.gov',
       'User-Agent': email,
-      'Authorization-Key': 'svlr2006@gmail.com'
+      'Authorization-Key': usaKey,
     })
     .then(results => {
       let parsedData = JSON.parse(results.text)
@@ -195,7 +195,7 @@ function displayResult (request, response) {
       })
     }) .catch(err => console.error(err));
 
-  Promise.all([museResult,gitHubResult,azunaResult])
+  Promise.all([museResult,gitHubResult,azunaResult,usaJobResult])
     .then(result => { 
       let newData =result.flat(4);
       let shuffleData= newData.shuffle();
