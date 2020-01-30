@@ -195,7 +195,7 @@ function displayResult (request, response) {
       })
     }) .catch(err => console.error(err));
 
-  Promise.all([museResult,gitHubResult,usaJobResult,azunaResult])
+  Promise.all([museResult,gitHubResult,azunaResult])
     .then(result => { 
       let newData =result.flat(4);
       let shuffleData= newData.shuffle();
