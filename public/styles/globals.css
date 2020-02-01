@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Martel+Sans&display=swap');
+
+/************************************/
+/* Global CSS Variable Declarations */
+/************************************/
+:root {
+  --jsBlue: rgb(0, 60, 120);
+  --jsGreen: rgb(0, 212, 39);
+  --jsPurple: rgb(212, 0, 173);
+  --jsOrange: rgb(212, 145, 0);
+  --jsWhite: rgb(240, 240, 240);
+  --jsBlack: rgb(40, 40, 40);
+}
+
+/******************/
+/* Global Styling */
+/******************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  position: relative;
+}
+
+html {
+  width: 100vw;
+}
+
+body {
+  width: 100%;
+  text-align: center;
+  background-color: var(--jsWhite);
+  overflow-x: hidden;
+}
+
+.wrapper {
+  min-height: 100vh;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 4rem;
+}

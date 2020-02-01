@@ -1,0 +1,52 @@
+@import url('../globals.css');
+
+article img {
+    width: 100%;
+    margin: auto;
+}
+
+a img {
+    width: 20%;
+    margin-top: 20px;
+}
+
+a img:hover {
+    opacity: .6;
+}
+
+article p {
+    width: 90%;
+    margin: auto;
+    font-size: 1.5em;
+   
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 2%;
+}
+
+section {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: white;
+    padding-top: 2%;
+}
+
+div {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    
+}
+
+article {
+    width: 32%;
+    margin: 4%
+}
+
+.container {
+    border-bottom: 5px orange solid;
+    height: 50px;
+    background-color: var(--jsBlue);
+    /* grid-template-columns: 33% 33% 33%; */
+}

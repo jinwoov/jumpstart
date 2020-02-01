@@ -1,0 +1,27 @@
+@import url('/styles/globals.css');
+
+/******************/
+/* Footer Styling */
+/******************/
+footer {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 4rem;
+  color: var(--jsWhite);
+  background-color: var(--jsBlue);
+  border-top: 0.1rem solid var(--jsBlack);
+}
+
+footer > p > a {
+  text-decoration: none;
+  color: var(--jsOrange);
+}
+
+footer > p > a:hover {
+  color: var(--jsWhite);
+}

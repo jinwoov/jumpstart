@@ -2,25 +2,41 @@
 <html lang="en">
 
 <head>
-  <%- include('../partials/layout/head.ejs') %>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="/styles/reset.css" />
+  <link rel="stylesheet" href="/styles/register/register.css">
+  <title>JumpStart Job Search Engine</title>
 </head>
 
 <body>
+  <header>
+    <img src="/images/jumpstartlogo.png" alt="jumpstart_logo">
+  </header>
   <main>
-    <form action="/register" method="post">
-      <fieldset>
-        <label for="username"> username</label>
-        <input type="text" name="username" placeholder="username">
-        <label for="password"> password</label>
-        <input type="password" name="password" placeholder="password">
-        <button type="submit">
+    <div class="wrapper">
+      <h1>Register a new account...</h1>
+      <form action="/register" method="post">
+        <label for="username">
+          <span>Enter a Username</span>
+          <input type="text" name="username" placeholder="username">
+        </label>
+        <label for="password">
+          <span>Enter Password</span>
+          <input type="password" name="password" placeholder="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+        </label>
+        <button type="submit" id='warning'>
           Register
         </button>
-      </fieldset>
-    </form>
-
+        <p>Please enter at least one number and one upper case and has to be minimum 8 characters.</p>
+      </form>
+      <%- include('../partials/global/footer.ejs') %>
+    </div>
   </main>
 
 </body>
+<script src="./js/jquery.js"></script>
+<script src="./js/login.js"></script>
 
 </html>

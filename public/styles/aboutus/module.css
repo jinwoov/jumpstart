@@ -1,0 +1,19 @@
+@media (max-width: 768px) {
+    body {
+        width: 100%;
+
+    }
+
+    .wrapper > div {
+        display:block;
+    }
+
+    article {
+        width: 90%
+    }
+
+    a img {
+        width: 20%;
+        margin-top: 40px;
+    }
+}
