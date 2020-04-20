@@ -12,7 +12,7 @@ namespace jumpstartAPI.Models.Interface
         Task<UserDTO> CreateUser(UserDTO uDTO);
 
         //r
-        Task<UserDTO> GetUser(int id);
+        Task<UserDTO> GetUser(UserDTO uDTO);
 
         //d
         Task<UserDTO> DeleteUser(int id);

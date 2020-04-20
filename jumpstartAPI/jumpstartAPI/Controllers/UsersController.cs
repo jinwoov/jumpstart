@@ -26,9 +26,9 @@ namespace jumpstartAPI.Controllers
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserDTO>> GetUser(int id)
+        public async Task<ActionResult<UserDTO>> GetUser(UserDTO users)
         {
-            var user = await _context.GetUser(id);
+            var user = await _context.GetUser(users);
 
             if (user == null)
             {

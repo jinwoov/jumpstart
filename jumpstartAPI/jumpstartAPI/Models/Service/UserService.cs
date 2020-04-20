@@ -47,15 +47,23 @@ namespace jumpstartAPI.Models.Service
             return uDTO;
         }
 
-        public async Task<UserDTO> GetUser(int id)
+        public async Task<UserDTO> GetUser(UserDTO users)
         {
-            var user = await _context.Users.FindAsync(id);
+            try
+            {
+                var user = await _context.Users.Where(x => x.UserName == users.UserName).SingleAsync();
 
-            UserDTO uDTO = ConvertToDTO(user);
+                UserDTO uDTO = ConvertToDTO(user);
 
-            uDTO.JobList = await GetJobForUser(id);
+                uDTO.JobList = await GetJobForUser(user.ID);
 
-            return uDTO;
+                return uDTO;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+           
         }
 
         public async Task<List<JobDTO>> GetJobForUser(int id)

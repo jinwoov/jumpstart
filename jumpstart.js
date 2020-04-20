@@ -11,6 +11,7 @@ const pg = require('pg');
 require('ejs');
 let azunaKey = process.env.AZUNA_API_KEY;
 let museKey = process.env.MUSE_API_KEY;
+let url = process.env.URL;
 // let usaKey = process.env.USAJOBS_API_KEY;
 // let email= process.env.EMAIL;
 
@@ -21,7 +22,7 @@ const user = require('./lib/user');
 // Declare app configs.
 const app = express();
 const PORT = process.env.PORT || 8081;
-const client = new pg.Client(process.env.DATABASE_URL);
+const
 
 // Declare app middleware.
 app.set('view engine', 'ejs');
@@ -61,22 +62,10 @@ app.delete('/status/:id', deleteJob);
 /////// LOGIN FUNCTIONS /////////
 function logInUser(req, res) {
   let loginResults = {
-    username: req.body.username,
-    password: req.body.password
+    username: req.body.username
   }
-  let SQL = 'SELECT * FROM users WHERE username = $1 AND password = crypt($2, password);';
-  let safeValues = [loginResults.username, loginResults.password];
-  client.query(SQL, safeValues)
-    .then(result => {
-      if (result.rowCount === 1) {
-        user.username = result.rows[0].username;
-        res.redirect('/list');
-      } else {
-        flags.loginFail = true;
-        res.render('./index', { loginFail: flags.loginFail })
-      }
-    })
-    .catch(err => console.error(err));
+  
+
 }
 
 /// Display register page
@@ -88,41 +77,9 @@ function displayRegister(request, response) {
 
 function registerUser(req, res) {
   let registerResults = {
-    username: req.body.username,
-    password: req.body.password
+    username: req.body.username
   }
-  let querySQL = 'SELECT * FROM users WHERE username = $1;';
-  let queryValues = [registerResults.username];
-  client.query(querySQL, queryValues)
-    .then(results => {
-      if (results.rowCount !== 0) {
-        console.log('User already exists!');
-      }
-      else {
-        let newUserQuery = `INSERT INTO users (username, password) VALUES ($1, crypt($2, gen_salt('bf', 8)));`;
-        let newUserValues = [registerResults.username, registerResults.password];
-        let newUserTable = `CREATE TABLE ${registerResults.username}_jobs
-          (
-            id SERIAL PRIMARY KEY,
-            title VARCHAR(255),
-            url VARCHAR(255),
-            summary TEXT,
-            location VARCHAR(255),
-            skills TEXT,
-            company VARCHAR(255),
-            tags TEXT
-          );`;
-        client.query(newUserQuery, newUserValues)
-          .then(
-            client.query(newUserTable)
-              .then(() => {
-                user.username = registerResults.username;
-                res.status(200).redirect('/search');
-              })
-          )
-          .catch(err => console.error(err));
-      }
-    })
+  
 }
 
 function aboutus(request, response) {
@@ -372,8 +329,5 @@ function errorHandler(error, request, response) {
 }
 
 // Assign app to connect to database and then listen on PORT.
-client.connect()
-  .then(
     app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))
-  )
-  .catch(err => console.error(err))
+
