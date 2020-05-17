@@ -16,5 +16,7 @@ namespace jumpstartAPI.Models.Interface
         //Get Jobs by Users id
         Task<List<JobDTO>> GetJobsUsingUser(string userName);
 
+        Task DeleteUser(string userName);
+
     }
 }

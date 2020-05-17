@@ -30,7 +30,7 @@ namespace jumpstartAPI.Models.Service
                 Url = jobDTO.Url
             };
 
-            var jobba = _context.Jobs.Add(newJob);
+            _context.Jobs.Add(newJob);
             await _context.SaveChangesAsync();
 
             return jobDTO;

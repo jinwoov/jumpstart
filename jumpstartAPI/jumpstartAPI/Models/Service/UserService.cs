@@ -52,6 +52,13 @@ namespace jumpstartAPI.Models.Service
             return userDTO;
         }
 
+        public async Task DeleteUser(string userName)
+        {
+            var user = await _jumpDbContext.Users.Where(x => x.UserName == userName).SingleAsync();
+            _jumpDbContext.Users.Remove(user);
+            await _jumpDbContext.SaveChangesAsync();
+        }
+
         public UserDTO ConvertToDTO(User user)
         {
             UserDTO userDTO = new UserDTO
@@ -62,5 +69,7 @@ namespace jumpstartAPI.Models.Service
 
             return userDTO;
         }
+
+        
     }
 }

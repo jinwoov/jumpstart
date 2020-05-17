@@ -10,7 +10,7 @@ using jumpstartAPI.Models;
 
 namespace jumpstartAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/userjob")]
     [ApiController]
     public class UserJobsController : ControllerBase
     {
@@ -21,65 +21,18 @@ namespace jumpstartAPI.Controllers
             _context = context;
         }
 
-        // GET: api/UserJobs
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserJob>>> GetUserJob()
-        {
-            return await _context.UserJob.ToListAsync();
-        }
-
-        // GET: api/UserJobs/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<UserJob>> GetUserJob(int id)
-        {
-            var userJob = await _context.UserJob.FindAsync(id);
-
-            if (userJob == null)
-            {
-                return NotFound();
-            }
-
-            return userJob;
-        }
-
-        // PUT: api/UserJobs/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUserJob(int id, UserJob userJob)
-        {
-            if (id != userJob.UserID)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(userJob).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserJobExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
         // POST: api/UserJobs
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<UserJob>> PostUserJob(UserJob userJob)
+        [HttpPost, Route("{userID}/{jobID}")]
+        public async Task<ActionResult<UserJob>> PostUserJob(int userID, int jobID)
         {
+            UserJob userJob = new UserJob
+            {
+                UserID = userID,
+                JobID = jobID
+            };
+
             _context.UserJob.Add(userJob);
             try
             {
@@ -101,14 +54,14 @@ namespace jumpstartAPI.Controllers
         }
 
         // DELETE: api/UserJobs/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<UserJob>> DeleteUserJob(int id)
+        [HttpDelete, Route("{userID}/{jobID}")]
+        public async Task<ActionResult<UserJob>> DeleteUserJob(int userID, int jobID)
         {
-            var userJob = await _context.UserJob.FindAsync(id);
-            if (userJob == null)
+            UserJob userJob = new UserJob
             {
-                return NotFound();
-            }
+                UserID = userID,
+                JobID = jobID
+            };
 
             _context.UserJob.Remove(userJob);
             await _context.SaveChangesAsync();
