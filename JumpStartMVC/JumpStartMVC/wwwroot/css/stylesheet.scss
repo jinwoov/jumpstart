@@ -1,0 +1,49 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Martel+Sans&display=swap');
+
+$primary: #003c78;
+$white: #f0f0f0;
+$background: #ededea;
+
+*, *:before, *:after{
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $background;
+    font-family: 'Martel Sans', sans-serif;
+    font-size: 20px;
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    main {
+        #login-form {
+            padding: 30px;
+            background-color: $primary;
+            color: $white;
+            border-radius: 2rem;
+            box-shadow: 0.5rem 0.5rem 0.5rem black;
+        }
+
+        div {
+            #register-box {
+                align-self: center;
+            }
+        }
+
+        #logo {
+            width: 20%;
+        }
+    }
+
+    footer {
+        background-color: $primary;
+        color: $white;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border-top: 0.1rem solid black;
+    }
+}
