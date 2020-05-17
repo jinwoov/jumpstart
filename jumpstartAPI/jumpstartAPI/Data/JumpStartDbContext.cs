@@ -15,9 +15,11 @@ namespace jumpstartAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.Entity<UserJob>().HasKey(x => new { x.UserID, x.JobID });
         }
 
+        public DbSet<UserJob> UserJob { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Job> Jobs { get; set; }
     }
 
