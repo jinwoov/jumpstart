@@ -1,0 +1,71 @@
+﻿@page
+@model JumpStartMVC.Pages.Account.RegisterModel
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<body>
+    <div class="container" style="margin-top:20px;">
+        <form method="post">
+            <div asp-validation-summary="All"></div>
+            <div class="form-group row">
+                <label asp-for="RegisterData.Email" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="RegisterData.Email" class="form-control" />
+                    <span asp-validation-for="RegisterData.Email"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="RegisterData.FirstName" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="RegisterData.FirstName" class="form-control" />
+                    <span asp-validation-for="RegisterData.FirstName"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="RegisterData.LastName" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="RegisterData.LastName" class="form-control" />
+                    <span asp-validation-for="RegisterData.LastName"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="RegisterData.Password" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="RegisterData.Password" class="form-control" />
+                    <small id="emailHelp" class="form-text text-muted">Password must include small, upper case, number and one special character.</small>
+                    <span asp-validation-for="RegisterData.Password"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="RegisterData.ConfirmPassword" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="RegisterData.ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="RegisterData.ConfirmPassword"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="RegisterData.JobType" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="RegisterData.JobType" class="form-control" />
+                    <small id="emailHelp" class="form-text text-muted">Full Time / Part Time / Temp / Gig</small>
+                    <span asp-validation-for="RegisterData.JobType"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-9 offset-sm-3 my-4">
+                    <button type="submit" class="btn btn-primary" id="register-button">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>

@@ -4,10 +4,13 @@
 
 body {
   background-color: #ededea;
-  font-family: 'Martel Sans', sans-serif;
-  font-size: 20px; }
+  font-family: 'Martel Sans', sans-serif; }
+  body #wrapper {
+    min-height: 100vh; }
   body a:hover {
     text-decoration: none; }
+  body #wrapper {
+    min-height: 100vh; }
   body main #login-form {
     padding: 30px;
     background-color: #003c78;
@@ -16,12 +19,15 @@ body {
     box-shadow: 0.5rem 0.5rem 0.5rem black; }
   body main div #register-box {
     align-self: center; }
+  body main div #register-button {
+    background-color: #003c78 !important;
+    color: #f0f0f0 !important; }
   body main #logo {
     width: 20%; }
   body footer {
     background-color: #003c78;
     color: #f0f0f0;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;

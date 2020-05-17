@@ -11,10 +11,15 @@ $background: #ededea;
 body {
     background-color: $background;
     font-family: 'Martel Sans', sans-serif;
-    font-size: 20px;
-
+    #wrapper{
+        min-height: 100vh;
+    }
     a:hover {
         text-decoration: none;
+    }
+
+    #wrapper{
+        min-height: 100vh;
     }
 
     main {
@@ -30,6 +35,11 @@ body {
             #register-box {
                 align-self: center;
             }
+
+            #register-button{
+                background-color: $primary !important;
+                color: $white !important;
+            }
         }
 
         #logo {
@@ -40,7 +50,7 @@ body {
     footer {
         background-color: $primary;
         color: $white;
-        position: absolute;
+        position: fixed;
         bottom: 0;
         left: 0;
         width: 100%;
