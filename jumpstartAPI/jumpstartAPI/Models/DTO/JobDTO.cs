@@ -15,6 +15,5 @@ namespace jumpstartAPI.Models.DTO
         public string Company { get; set; }
         public string Skills { get; set; }
         public int Tags { get; set; }
-        public int UserID { get; set; }
     }
 }

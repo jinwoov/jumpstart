@@ -16,8 +16,7 @@ namespace jumpstartAPI.Models
         public string Skills { get; set; }
         public Tag Tags { get; set; }
 
-        public List<UserJobs> userJobs = new List<UserJobs>();
-
+        public List<UserJob> UserJobs = new List<UserJob>(); 
 
     }
     public enum Tag

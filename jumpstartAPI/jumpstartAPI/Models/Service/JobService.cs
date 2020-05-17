@@ -33,24 +33,7 @@ namespace jumpstartAPI.Models.Service
             var jobba = _context.Jobs.Add(newJob);
             await _context.SaveChangesAsync();
 
-            await CreateUserJob(jobDTO.UserID);
-
             return jobDTO;
-        }
-
-        public async Task CreateUserJob(int userNumb)
-        {
-            int lastJob = await _context.Jobs.OrderByDescending(x => x.ID).Select(x => x.ID).FirstAsync();
-
-            UserJobs userJobs = new UserJobs()
-            {
-                UserID = userNumb,
-                JobID = lastJob
-            };
-
-            _context.UserJobs.Add(userJobs);
-
-            await _context.SaveChangesAsync();
         }
 
         public async Task<JobDTO> DeleteJob(int id)

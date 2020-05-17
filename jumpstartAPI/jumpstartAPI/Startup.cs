@@ -46,7 +46,6 @@ namespace jumpstartAPI
              );
 
             services.AddTransient<IJobManager, JobService>();
-            services.AddTransient<IUserManager, UserService>();
 
         }
 
